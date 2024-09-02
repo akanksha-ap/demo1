@@ -1,0 +1,413 @@
+1)Variable & Constants: kisi data ko store karne ya fir value ko nikalne ke liye variables ka use hota hai.
+                        variable --> mutable --> let, var
+                        constants ek bar define karne ke bad uski value change nahi ho sakti
+                        constants --> immutable --> const
+
+2)console: console.log() --> ek value ko print karta hai
+           console.table([]) --> multiple values ko table ke format mein showcase karata hai
+
+3)comments: // --> single line comments
+            /*
+            multi-lines comment
+            */
+
+4)Conversion of Datatypes
+
+ ---if we use new keyword before String() & Number() it becomes Object
+
+    1. String to Number:`Number(val)-->number` 
+                        `new Number(val)-->Object` 
+                        `parseInt(value)`--> Integer mein convert karta hai float value ko remove karke ke or 
+                        `parseFloat(val)`--ka use karte hain jab aapko decimal values ko string se number mein convert karna ho.
+        eg: let strNumber = "123.24";
+            let num = parseInt(strNumber);
+
+            console.log(num); // Output: 123
+
+            console.log('1' + 2 + 3) --> 123
+            console.log(1 + 2 + '3') --> 33
+    
+    2.Number to String: using concatenation ya `toString(val)` method or `new String(val)-->Object` 
+                        !! Agar string mein numbers ke alawa kuch bhi hai, to conversion NaN (Not a Number) de dega.
+                        ~~ Concatenation se number ko direct string mein convert kar sakte hain.
+        eg: let number = 456;
+            console.log(number + ""); // Output: "456"
+
+
+    3.String/Number to Boolean: Any String or any non-zero numbers --> true, 
+                                zero & empty string  --> false.
+                               --> Boolean() method is used
+        eg: let str1 = "Hello";
+            let str2 = "";
+            let num1 = 42;
+            let num2 = 0;
+
+            console.log(Boolean(str1)); // Output: true
+            console.log(Boolean(str2)); // Output: false
+            console.log(Boolean(num1)); // Output: true
+            console.log(Boolean(num2)); // Output: false
+
+    -->Boolean to String :`toString()` method 
+    -->A boolean can be converted to a number, where true becomes 1, & false becomes 0
+
+
+5)Summary:-
+Types of Datatypes: Primitive and Reference(Non-Primitive)
+
+~~Primitive(7 Types): string , number ,boolean , null , undefined , symbol {unique key} , bigint {big value}
+                     Real Copy 
+
+    1.Symbol: Har baar jab aap `Symbol(val)` call karte hain, ek naya aur unique `Symbol` create hota hai.
+                use `Symbol(val)` to create
+        eg: let symbol1 = Symbol("mySymbol");
+            let symbol2 = Symbol("mySymbol");
+
+            console.log(symbol1 === symbol2); // Output: false
+
+
+~~Non-Primitive: Array, Object, Function.
+                 Reference Copy
+                 real copy ke liye `spread Operrator` use karte hai [...variable_name]
+
+        "null" -> is of Object type
+        "undefined" -> undefined
+        "Number" -> number
+        "String" -> String
+        "function" -> function Object
+        "Symbol" -> Symbol
+
+6)Stack & Heap Memory
+    Stack Memory: [Primitive Type] for real copy of data. changes karne par data change nahi hota hai
+
+    Heap Memory: [Reference Type] for shallow / Reference copy of data from memory. changes karne par data change hota hai.
+
+ Statically Typed: Statically typed languages mein, aapko variable ko define karte waqt hi uska data type specify karna padta hai.
+    eg: java, c++
+        int number = 5;
+        int number = "hello";      //Error
+
+ Dynamically Typed: Dynamically typed languages mein, aapko variable ko define karte waqt uska data type specify karne ki zarurat nahi hoti.
+                     Type runtime mein decide hota hai.
+        eg: JavaScript, python
+            let number = 5;
+            let number = "Ayush";  //No error
+
+7)Strings: Modern Syntax Strings ko likhne ka `String interpolation--> (`${variable_name.methods()}`)`
+    eg: let name = "ayush"
+        console.log(`this is my name: ${name.toUpperCase()}`) //Output: this is my name: AYUSH
+    
+    Strings Methods
+    1.length:  Yeh method string ki length ko return karta hai.
+        eg: let name = "Ayush"
+            console.log(name.length) //Output: 5
+    
+    2.toUpperCase(): Yeh method string ke har character ko uppercase mein convert karta hai.
+        eg: let str = "ayush";
+            console.log(str.toUpperCase()); // Output: AYUSH
+
+    3.toLowerCase(): 
+
+    4.indexOf(): Yeh method string mein ek substring ka index return karta hai.
+        eg: let str = "Hello World";
+            console.log(str.indexOf("World")); // Output: 6
+    
+    5.slice(): Yeh method ek string ka specified portion return karta hai.
+        eg: let str = "Hello World";
+            console.log(str.slice(6, 11)); // Output: World
+
+    6.replace(): Yeh method ek substring ko dusre substring se replace karta hai. Par sirf first letter ko replace karta hai.
+        eg: let str = "Hello World";
+            console.log(str.replace("World", "Universe")); // Output: Hello Universe
+
+    7.split():  Yeh method string ko split karta hai aur array mein convert karta hai.
+        eg: let str = "apple,banana,grapes";
+            console.log(str.split(",")); // Output: ["apple", "banana", "grapes"]
+
+    8.replaceAll("select", "change_to"): Yeh method ek substring ko dusre substring se replace karne ke liye use hota hai.
+        eg: const message = "Hello, world!";
+            const newMessage = message.replaceAll("l", "z");
+            console.log(newMessage); // Output: Hezzo, worzd!
+
+    9.trimStart()/trimEnd(): Yeh methods string ke shuruwat ya ant mein whitespace ko remove karne ke liye use hota hai.
+        eg: const text = "   Hello   ";
+            const trimmedTextStart = text.trimStart();
+            const trimmedTextEnd = text.trimEnd();
+            console.log(trimmedTextStart); // Output: "Hello   "
+            console.log(trimmedTextEnd); // Output: "   Hello"
+
+    10.startsWith()/endsWith(): Yeh methods string ka shuruaat ya ant di gayi substring ke saath match karne ke liye use hota hai.
+        eg: const text = "Hello, world!";
+            console.log(text.startsWith("Hello")); // Output: true
+            console.log(text.endsWith("world!")); // Output: true
+
+8)Numbers: `new Number(value)`--> new number mein he cast hoga.
+    Numbers Methods.
+    1.toFixed(val_in_num): given numbers ke bad kitna decimal value chayie.
+        eg: let num = 100
+            console.log(num.toFixed(2)) //Output: 100.00
+
+    2.toPrecision(val_in_num): value ranges from 1-21 & returns string, value ko precise ya fir chota ya bhadda karne mein kam aata hai.
+        eg: let num = 123.456789;
+            console.log(num.toPrecision(3)); // Output: 123
+            console.log(num.toPrecision(5)); // Output: 123.46
+    
+    3.toLocaleString('en-IN'): bydeafault us standards mein hota hain 
+        eg: let num = 100000
+            console.log(num.toLocaleString('en-IN')) // Output: 1,00,000
+
+9)Math: Math is a Object
+    Math Methods
+    1.abs(val): negative values ko +ve values mein convert karta hai.
+        eg: console.log(Math.abs(-2)) //Output: 2
+
+    2.round(val): used to roundoff the value the value == 2<1.5<1
+
+    3.ceil(): used to convert decimal no. to its highest value
+
+    4.floor(): used to convert decimal no. to its lowest value
+
+    5.random(): random no. generate karta hai between 0 to 1
+
+    6.min(): minimum value return karta hai
+        eg: console.log(Math.min(2, 3, 5, 7, 8)) //Output: 2
+
+    7.max(): maximum value return karta hai
+        eg: console.log(Math.max(2, 3, 5, 7, 8)) //Output: 8
+
+10)Date: `new Date()`: Object hai current date and time batata hain.
+    Date Methods
+    1.toString()
+    2.toDateString()
+    3.toLocaleString()
+
+    In js months `0` se start hote hai
+    let myDate = new Date(2024, 1, 21)
+    console.log(myDate.toDateString()) //Output: 'Wed Feb 21 2024'
+
+    `${Remaning rhe gaya hai}`
+
+11)Array: Values ko ek sath store karne ka kam karte hai
+         Array ka type `Object` hai.
+         Array ke element stored hote hai.
+        eg: let arr = [1, 2, 3, 4, 5];
+            let arr = ["Spiderman", "Groot", "fruit"];
+            let newArr = new Array(1, 23,34, 433, 5); 
+
+        `new Array(1, 2, 3, 4, 5)`--> direct [] mein convert ho jayega => iska type Object hai
+    
+    Array Methods.
+    1.push(value):Naya element array mein add karne ke liye `push` method ka use hota hai. 
+        eg: let myArray = [1, 2, 3];
+            myArray.push(4);
+            // myArray ab [1, 2, 3, 4] hoga
+
+    2.pop():`pop` method array ke last element ko remove karta hai
+        eg: let myArray = [1, 2, 3, 4];
+            myArray.pop();
+            // myArray ab [1, 2, 3] hoga
+
+    3.unshift(value):`unshift` method naya element array ke shuruwat mein add karta hai.
+        eg: let myArray = [2, 3, 4];
+            myArray.unshift(1);
+            // myArray ab [1, 2, 3, 4] hoga
+
+    4.shift(): shift method array ke first element ko remove karta hai.
+        eg: let myArray = [1, 2, 3, 4];
+            myArray.shift();
+            // myArray ab [2, 3, 4] hoga
+
+    5.indexOf(val):`indexOf` method ek element ki position (index) return karta hai.
+        eg: let myArray = [1, 2, 3, 4];
+            let index = myArray.indexOf(3);
+            // index ab 2 hoga
+
+    6.splice():`splice` method array mein se elements ko add or remove karne ke liye use hota hai.
+                splice real array me change karta hai
+
+        splice(startval(index), EndVal(Including + no. to remove), AddingVal)
+
+        eg: let myArray = [1, 2, 3, 4];
+            myArray.splice(2, 1); // index 2 se shuru hokar 1 element remove karega
+            // myArray ab [1, 2, 4] hoga
+
+    7.slice():`slice` method array ke kuch part ko extract karke naya array return karta hai.
+                slice real array me changes nahi karta
+
+        slice(startval(index), EndVal(Excluding)(index))
+
+        eg: let myArray = [1, 2, 3, 4];
+            let newArray = myArray.slice(1, 3); // index 1 se shuru hokar index 3 tak ke elements ko extract karega
+            // newArray ab [2, 3] hoga
+
+    8.concat():`concat` method do arrays ko combine karke naya array banata hai.
+        eg: let array1 = [1, 2];
+            let array2 = [3, 4];
+            let combinedArray = array1.concat(array2);
+            // combinedArray ab [1, 2, 3, 4] hoga
+
+    9.join('value'): `join`method ek array ke saare elements ko ek string mein join karke return karta hai.
+        eg: .join("+ , /")
+            let myArray = ['apple', 'banana', 'grape'];
+            let joinedString = myArray.join(', '); // Elements ko comma ke sath join karega
+            console.log(joinedString);
+            // Output: "apple, banana, grape"
+
+    10.includes(val): Questionary method hai values dhundhne ke liye use aata hain, boolean value return kata hai.
+        eg: let myArray = [1, 2, 3, 4, 5];
+            let checkValue = myArray.includes(3);
+
+            console.log(checkValue); // Output: true
+
+    11.flat(val/Infinity): `flat(val-total no of depth of array)` method ka use nested arrays ko ek single-level array mein convert karne ke liye hota hai.
+        eg: let anotherArr = [1, 2, 3, 4, 5, [7, 6], 3, 5,[4, 5, 3,[1, 2, [9,8,7]]]  ];
+            let newAnotherArr = anotherArr.flat(Infinity)
+            console.log(newAnotherArr); //[1, 2, 3, 4, 5, 7, 6, 3, 5, 4, 5, 3,1, 2, 9,8,7]
+    
+    12.isArray(val): `isArray()` method ek value ko check karke dekhta hai ki who ek array hai ya nahi.
+        either ture ya false
+
+    13.Array.from('val'): `from('value')` method ek iterable object ya array-like object ko ek "real" array mein convert karne ke liye use hota hai
+        eg: console.log(Array.from("Ayush"));    //['A','y','u','s','h']
+        eg: console.log(Array.from("123456"));  //['1','2','3','4','5','6']
+      ~~  eg: console.log(Array.from(12345678));  //[]
+
+    14.Array.of(val): `Array.of()` method ek ya multiple values ko ek array mein convert karne ke liye use hota hai
+        eg: let score1 = 10;
+            let score2 = 20;
+            let score3 = 30;
+
+            console.log(Array.of(score1, score2, score3));  //[10, 20, 30];
+
+    15.new Set(): `Set()` method ek JavaScript mein available ek built-in constructor hai, jo unique values ko store karne ke liye use hota hai. Ek Set ek collection hoti hai jisme kisi bhi prakar ke duplicate values allow nahi hote
+        eg: let mySet = new Set();
+
+            mySet.add(1);
+            mySet.add(2);
+            mySet.add(3);
+            mySet.add(2); // This value will be ignored because it's a duplicate
+
+            console.log(mySet); // Output: Set { 1, 2, 3 }
+
+            console.log(mySet.has(2)); // Output: true
+
+            mySet.delete(3);
+            console.log(mySet); // Output: Set { 1, 2 }
+
+            console.log(mySet.size); // Output: 2
+
+
+
+    Operators
+    1.Spread Operators`...`: array copy karne key liye ya merge ya elements ko extract kerne ke liye use karte hai.
+        eg: let originalArray = [1, 2, 3];
+            let copyArray = [...originalArray];
+            console.log(copyArray); //[1, 2, 3]--> Copying an Array
+
+            let array1 = [1, 2];
+            let array2 = [3, 4];
+            let mergedArray = [...array1, ...array2]; 
+            console.log(mergedArray); //[1, 2, 3, 4]--> Merging Array
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+2)Unary Operations
+    1.Unary Plus `+` : convert to number 
+        eg: let strNumber = "42";
+            let num = +strNumber;
+
+            console.log(num); // Output: 42 num-->Number
+    
+    2.Unary Minus `-`
+    
+    3.Logical Not `!`
+
+    4.typeof Operator: 
+
+    5.Increment(++), Decrement(--): 
+        i. Prefix :Prefix mein, pehle hi value badh jaati hai, aur phir assign hoti hai.
+        ii. Postfix :Postfix mein, pehle assign hoti hai phir value badh jaati hai.
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+3)Comparison in js:
+    1.Equality Operator:
+        i.Strict Equality`===`: Checks both value & datatype.
+
+        ii.Loose Equality `==`: checks only value & not datatype
+
+    2.Inequality Operator: 
+        i.Strict Inequality `!==`: value & datatype should not be equal then it returns true otherwise false
+            eg: let str1 = "hello";
+                let str2 = 5;
+                console.log(str1 !== str2); // Output: true
+
+        ii.Loose Inequality `!=`: checks only value & if value is different then it returns true otherwise false
+            eg: let str1 = "Ayush";
+                let str2 = 11;
+                console.log(str1 != str2); // Output: true
+
+    3.Relational Operator: 
+        > , < , >= , <= 
+    
+    4.Logical Operator: 
+        i.AND `&&`: all condition should be true if one of the condition is false then code will not excute or false
+            eg: let isTrue = true;
+                let isFalse = false;
+                console.log(isTrue && isFalse); // Output: false
+
+        ii.OR `||`: returns true if at least one of the condition is true; it returns false if both condition are false.
+            eg: let x = true;
+                let y = false;
+                console.log(x || y); // Output: true
+
+        iii.NOT `!`: inverse of condition.
+            eg: console.log(!true) //Output: false
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+        
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+5)Truthy & Falsy
+    Falsy -->  false, 0, -0, BigInt=0n, "", null, undefined, NaN, document.all
+
+    Truthy --> String, Number, "0", "false", " "--> contain space, [], {}, function(){} -->empty function
+
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
